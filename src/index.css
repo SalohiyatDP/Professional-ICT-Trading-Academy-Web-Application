@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-bg text-gray-200 font-sans antialiased;
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #11161d;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2a313c;
+    border-radius: 8px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #39424f;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-bg-card border border-border rounded-xl;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-accent text-white hover:bg-accent-hover;
+  }
+  .btn-ghost {
+    @apply btn bg-bg-soft text-gray-300 hover:bg-border-soft border border-border;
+  }
+  .btn-bull {
+    @apply btn bg-bull text-white hover:opacity-90;
+  }
+  .btn-bear {
+    @apply btn bg-bear text-white hover:opacity-90;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold;
+  }
+
+  .nav-link {
+    @apply flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-muted transition-colors hover:bg-bg-soft hover:text-gray-100;
+  }
+  .nav-link-active {
+    @apply bg-accent-soft text-white;
+  }
+
+  .stat-card {
+    @apply card p-4 flex flex-col gap-1;
+  }
+
+  .prose-trading h2 {
+    @apply text-xl font-bold text-white mt-6 mb-2;
+  }
+  .prose-trading h3 {
+    @apply text-lg font-semibold text-gray-100 mt-4 mb-1;
+  }
+  .prose-trading p {
+    @apply text-gray-300 leading-relaxed mb-3;
+  }
+  .prose-trading ul {
+    @apply list-disc pl-5 space-y-1 text-gray-300 mb-3;
+  }
+}
