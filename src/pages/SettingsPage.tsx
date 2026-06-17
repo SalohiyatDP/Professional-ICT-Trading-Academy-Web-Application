@@ -46,34 +46,34 @@ export function SettingsPage() {
 
   return (
     <div className="space-y-6">
-      <SectionTitle title="⚙️ Settings" subtitle="Preferences are stored locally on your device" />
+      <SectionTitle title="⚙️ Sozlamalar" subtitle="Sozlamalar qurilmangizda lokal saqlanadi" />
 
       <Card className="divide-y divide-border">
         <Toggle
-          label="Animations"
-          description="Animate candle formation in lessons"
+          label="Animatsiyalar"
+          description="Darslarda sham shakllanishini animatsiya qilish"
           checked={settings.animationsEnabled}
           onChange={settings.toggleAnimations}
         />
         <Toggle
-          label="Show volume"
-          description="Display the volume histogram on charts"
+          label="Hajmni ko'rsatish"
+          description="Grafiklarda hajm histogrammasini ko'rsatish"
           checked={settings.showVolume}
           onChange={settings.toggleVolume}
         />
         <Toggle
-          label="Structure labels"
-          description="Auto-label HH/HL/LH/LL on charts"
+          label="Struktura belgilari"
+          description="Grafiklarda HH/HL/LH/LL ni avto-belgilash"
           checked={settings.showStructureLabels}
           onChange={settings.toggleStructureLabels}
         />
       </Card>
 
       <Card>
-        <h3 className="font-semibold text-white">Data</h3>
+        <h3 className="font-semibold text-white">Ma'lumotlar</h3>
         <p className="mt-1 text-sm text-muted">
-          All progress, quiz results and replay sessions live in your browser (localStorage +
-          IndexedDB). Nothing is sent anywhere — the app is fully offline.
+          Barcha progress, test natijalari va replay sessiyalari brauzeringizda (localStorage +
+          IndexedDB) saqlanadi. Hech narsa hech qayerga yuborilmaydi — ilova to'liq offline ishlaydi.
         </p>
         {confirm ? (
           <div className="mt-3 flex gap-2">
@@ -84,24 +84,24 @@ export function SettingsPage() {
                 setConfirm(false);
               }}
             >
-              Yes, reset everything
+              Ha, hammasini tiklash
             </button>
             <button className="btn-ghost" onClick={() => setConfirm(false)}>
-              Cancel
+              Bekor qilish
             </button>
           </div>
         ) : (
           <button className="btn-ghost mt-3" onClick={() => setConfirm(true)}>
-            Reset progress
+            Progressni tiklash
           </button>
         )}
       </Card>
 
       <Card>
-        <h3 className="font-semibold text-white">About</h3>
+        <h3 className="font-semibold text-white">Ilova haqida</h3>
         <p className="mt-1 text-sm text-muted">
-          ICT Trading Academy · Installable PWA · Works 100% offline. Educational content only —
-          not financial advice.
+          ICT Trading Academy · O'rnatiladigan PWA · 100% offline ishlaydi. Faqat ta'limiy
+          maqsadda — moliyaviy maslahat emas.
         </p>
       </Card>
     </div>

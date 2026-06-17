@@ -4,13 +4,13 @@ import { useProgressStore } from "@/store/useProgressStore";
 import { cn } from "@/lib/utils";
 
 const mainNav = [
-  { to: "/", label: "Dashboard", icon: "📊", end: true },
-  { to: "/replay", label: "Replay Simulator", icon: "⏯" },
-  { to: "/chart-lab", label: "Chart Lab", icon: "📉" },
-  { to: "/risk", label: "Risk Calculators", icon: "🧮" },
-  { to: "/exam", label: "Final Exam", icon: "🏆" },
-  { to: "/tutor", label: "AI Tutor", icon: "🤖" },
-  { to: "/certificates", label: "Certificates", icon: "🎓" },
+  { to: "/", label: "Boshqaruv paneli", icon: "📊", end: true },
+  { to: "/replay", label: "Replay Simulyator", icon: "⏯" },
+  { to: "/chart-lab", label: "Grafik Laboratoriya", icon: "📉" },
+  { to: "/risk", label: "Risk Kalkulyatorlari", icon: "🧮" },
+  { to: "/exam", label: "Yakuniy Imtihon", icon: "🏆" },
+  { to: "/tutor", label: "AI Repetitor", icon: "🤖" },
+  { to: "/certificates", label: "Sertifikatlar", icon: "🎓" },
 ];
 
 export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
@@ -42,7 +42,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
       ))}
 
       <p className="px-3 pt-5 pb-1 text-xs font-semibold uppercase tracking-wide text-muted">
-        Curriculum
+        O'quv dasturi
       </p>
 
       {modules.map((m) => {
@@ -75,7 +75,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
           className={({ isActive }) => cn("nav-link", isActive && "nav-link-active")}
         >
           <span className="w-5 text-center">⚙️</span>
-          <span>Settings</span>
+          <span>Sozlamalar</span>
         </NavLink>
       </div>
     </nav>

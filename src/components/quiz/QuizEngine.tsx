@@ -21,13 +21,13 @@ export function QuizEngine({ moduleId, questions, title, onExit }: QuizEnginePro
       <Card>
         <h2 className="text-xl font-bold text-white">{title}</h2>
         <p className="mt-1 text-sm text-muted">
-          {questions.length} questions. Answer all, then submit to score.
+          {questions.length} ta savol. Barchasiga javob bering, keyin baholash uchun yuboring.
         </p>
         <button
           className="btn-primary mt-4"
           onClick={() => store.start(moduleId, questions)}
         >
-          Start quiz
+          Testni boshlash
         </button>
       </Card>
     );
@@ -61,9 +61,9 @@ function QuizRunner() {
     <Card className="space-y-4">
       <div className="flex items-center justify-between">
         <Badge tone="accent">
-          Question {current + 1} / {questions.length}
+          {current + 1}-savol / {questions.length}
         </Badge>
-        <span className="text-xs text-muted">{answeredCount} answered</span>
+        <span className="text-xs text-muted">{answeredCount} ta javob berildi</span>
       </div>
       <ProgressBar value={((current + 1) / questions.length) * 100} />
 
@@ -98,7 +98,7 @@ function QuizRunner() {
 
       <div className="flex items-center justify-between pt-2">
         <button className="btn-ghost" onClick={prev} disabled={current === 0}>
-          ← Prev
+          ← Oldingi
         </button>
         <div className="flex gap-1">
           {questions.map((_, i) => (
@@ -119,11 +119,11 @@ function QuizRunner() {
         </div>
         {current < questions.length - 1 ? (
           <button className="btn-ghost" onClick={next}>
-            Next →
+            Keyingi →
           </button>
         ) : (
           <button className="btn-primary" onClick={() => submit()}>
-            Submit
+            Yuborish
           </button>
         )}
       </div>
@@ -151,7 +151,7 @@ function QuizResultView({
   return (
     <div className="space-y-4">
       <Card className="text-center">
-        <p className="text-sm uppercase tracking-wide text-muted">Your score</p>
+        <p className="text-sm uppercase tracking-wide text-muted">Sizning balingiz</p>
         <p
           className={cn(
             "my-2 text-6xl font-bold font-mono",
@@ -161,23 +161,23 @@ function QuizResultView({
           {result.score}%
         </p>
         <p className="text-sm text-gray-300">
-          {result.correct} / {result.total} correct ·{" "}
-          {passed ? "Passed 🎉" : "Keep practicing"}
+          {result.correct} / {result.total} to'g'ri ·{" "}
+          {passed ? "O'tdingiz 🎉" : "Mashq qilishda davom eting"}
         </p>
         <div className="mt-4 flex justify-center gap-2">
           <button className="btn-primary" onClick={onRetry}>
-            Retake
+            Qayta topshirish
           </button>
           {onExit && (
             <button className="btn-ghost" onClick={onExit}>
-              Done
+              Tayyor
             </button>
           )}
         </div>
       </Card>
 
       <Card className="space-y-3">
-        <h3 className="font-semibold text-white">Review</h3>
+        <h3 className="font-semibold text-white">Ko'rib chiqish</h3>
         {result.perQuestion.map((pq, i) => {
           const q = byId[pq.questionId];
           return (

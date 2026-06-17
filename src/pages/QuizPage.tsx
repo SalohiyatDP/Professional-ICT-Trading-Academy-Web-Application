@@ -16,11 +16,11 @@ export function QuizPage() {
       <Link to={`/module/${mod.id}`} className="text-sm text-muted hover:text-white">
         ← {mod.title}
       </Link>
-      <h1 className="text-2xl font-bold text-white">{mod.title} — Quiz</h1>
+      <h1 className="text-2xl font-bold text-white">{mod.title} — Test</h1>
       <QuizEngine
         moduleId={mod.id}
         questions={questions}
-        title={`${mod.title} quiz`}
+        title={`${mod.title} testi`}
         onExit={() => navigate(`/module/${mod.id}`)}
       />
     </div>

@@ -14,7 +14,7 @@ export default defineConfig({
         name: "ICT Trading Academy",
         short_name: "ICT Academy",
         description:
-          "Professional ICT, Market Structure & Price Action academy - works 100% offline",
+          "Professional ICT, Market Structure va Price Action akademiyasi - 100% offline ishlaydi",
         theme_color: "#0e1117",
         background_color: "#0e1117",
         display: "standalone",

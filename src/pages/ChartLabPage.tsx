@@ -25,7 +25,7 @@ export function ChartLabPage() {
 
   return (
     <div className="space-y-4">
-      <SectionTitle title="📉 Chart Lab" subtitle="TradingView-style chart engine: candlestick / bar / line, structure labels, drawing tools" />
+      <SectionTitle title="📉 Grafik Laboratoriya" subtitle="TradingView uslubidagi grafik dvigateli: candlestick / bar / line, struktura belgilari, chizish vositalari" />
 
       <Card className="p-3">
         <div className="mb-3 flex flex-wrap items-center gap-2">
@@ -45,20 +45,20 @@ export function ChartLabPage() {
           </div>
 
           <button onClick={toggleVolume} className={cn("btn-ghost text-xs py-1.5", showVolume && "text-white")}>
-            {showVolume ? "✓ " : ""}Volume
+            {showVolume ? "✓ " : ""}Hajm
           </button>
           <button
             onClick={toggleStructureLabels}
             className={cn("btn-ghost text-xs py-1.5", showStructureLabels && "text-white")}
           >
-            {showStructureLabels ? "✓ " : ""}Structure (HH/HL/LH/LL)
+            {showStructureLabels ? "✓ " : ""}Struktura (HH/HL/LH/LL)
           </button>
           <button onClick={addLevel} className="btn-ghost text-xs py-1.5">
-            ＋ Horizontal line
+            ＋ Gorizontal chiziq
           </button>
           {levels.length > 0 && (
             <button onClick={() => setLevels([])} className="btn-ghost text-xs py-1.5">
-              Clear lines
+              Chiziqlarni tozalash
             </button>
           )}
 
@@ -89,7 +89,7 @@ export function ChartLabPage() {
         <div className="flex flex-wrap items-center gap-2 text-xs text-muted">
           <Badge tone="bull">HH / HL</Badge>
           <Badge tone="bear">LH / LL</Badge>
-          <span>Auto-detected swing structure. Use the toolbar to switch chart modes, toggle volume, and drop horizontal levels. Scroll / drag on the chart to zoom & pan.</span>
+          <span>Avtomatik aniqlangan swing strukturasi. Grafik rejimlarini almashtirish, hajmni yoqish/o'chirish va gorizontal darajalar qo'yish uchun asboblar panelidan foydalaning. Zoom va pan uchun grafikda scroll / drag qiling.</span>
         </div>
       </Card>
     </div>

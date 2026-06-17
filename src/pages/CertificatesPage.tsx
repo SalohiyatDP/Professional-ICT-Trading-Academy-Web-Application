@@ -25,11 +25,11 @@ export function CertificatesPage() {
 
   return (
     <div className="space-y-6">
-      <SectionTitle title="🎓 Certification" subtitle="Earn your level by completing lessons and passing the final exam" />
+      <SectionTitle title="🎓 Sertifikatsiya" subtitle="Darslarni tugatib va yakuniy imtihondan o'tib darajangizni qo'lga kiriting" />
 
       <Card>
         <label className="block max-w-sm">
-          <span className="mb-1 block text-xs uppercase tracking-wide text-muted">Name on certificate</span>
+          <span className="mb-1 block text-xs uppercase tracking-wide text-muted">Sertifikatdagi ism</span>
           <input
             value={holder}
             onChange={(e) => setHolder(e.target.value)}
@@ -49,7 +49,7 @@ export function CertificatesPage() {
                 <Badge tone={unlocked ? "gold" : "neutral"}>{meta.minScore}%+</Badge>
               </div>
               <h3 className="mt-2 font-semibold text-white">{meta.label}</h3>
-              <p className="text-xs text-muted">{unlocked ? "Unlocked" : "Locked"}</p>
+              <p className="text-xs text-muted">{unlocked ? "Ochilgan" : "Qulflangan"}</p>
             </Card>
           );
         })}
@@ -59,12 +59,12 @@ export function CertificatesPage() {
         <Certificate holder={holder} level={level} score={examScore} allDone={allDone} />
       ) : (
         <Card className="text-center">
-          <p className="text-white">No certificate yet.</p>
+          <p className="text-white">Hali sertifikat yo'q.</p>
           <p className="mt-1 text-sm text-muted">
-            Pass the final exam (60%+) to earn your first certificate.
+            Birinchi sertifikatingizni olish uchun yakuniy imtihondan (60%+) o'ting.
           </p>
           <Link to="/exam" className="btn-primary mt-4 inline-flex">
-            Take final exam
+            Yakuniy imtihonni topshirish
           </Link>
         </Card>
       )}
@@ -90,20 +90,20 @@ function Certificate({
       style={{ borderColor: meta.color, background: "linear-gradient(160deg,#161b22,#0e1117)" }}
     >
       <p className="text-xs uppercase tracking-[0.3em] text-muted">ICT Trading Academy</p>
-      <p className="mt-4 text-sm text-muted">This certifies that</p>
+      <p className="mt-4 text-sm text-muted">Ushbu hujjat tasdiqlaydiki</p>
       <p className="mt-1 text-3xl font-bold text-white">{holder}</p>
-      <p className="mt-3 text-sm text-muted">has achieved the level of</p>
+      <p className="mt-3 text-sm text-muted">quyidagi darajaga erishdi</p>
       <p className="mt-1 text-2xl font-bold" style={{ color: meta.color }}>
         {meta.label}
       </p>
       <p className="mt-4 font-mono text-sm text-gray-300">
-        Exam score: {score}% · Issued {formatDate(Date.now())}
+        Imtihon bali: {score}% · Berildi {formatDate(Date.now())}
       </p>
       {!allDone && (
-        <p className="mt-3 text-xs text-gold">Tip: complete all lessons for full mastery.</p>
+        <p className="mt-3 text-xs text-gold">Maslahat: to'liq mahorat uchun barcha darslarni tugating.</p>
       )}
       <div className="mx-auto mt-6 h-px w-40 bg-border" />
-      <p className="mt-2 text-xs text-muted">Professional ICT Trader Program</p>
+      <p className="mt-2 text-xs text-muted">Professional ICT Treyder Dasturi</p>
     </div>
   );
 }

@@ -28,8 +28,7 @@ function q(
   };
 }
 
-// Build a simple BOS marker for the uptrend example: mark the candle that closes
-// above the previous swing high.
+// Uptrend misoli uchun BOS marker: oldingi swing high'dan yuqorida yopiladigan shamni belgilash.
 const bosMarker: ChartMarker[] = (() => {
   const highs = upMarkers.filter((m) => m.kind === "HH");
   if (highs.length < 2) return [];
@@ -44,87 +43,87 @@ const lessons: Lesson[] = [
   {
     id: "ms-swings",
     moduleId: "market-structure",
-    title: "Swing Points: HH, HL, LH, LL",
-    summary: "The four building blocks of market structure.",
+    title: "Swing Nuqtalari: HH, HL, LH, LL",
+    summary: "Market structure'ning to'rtta asosiy elementi.",
     minutes: 8,
     content: [
-      { kind: "paragraph", text: "Markets move in swings. Naming each swing relative to the previous one of its type defines the trend:" },
+      { kind: "paragraph", text: "Bozor to'lqinlar bilan harakatlanadi. Har bir to'lqinni o'z turidagi oldingisiga nisbatan nomlash trendni belgilaydi:" },
       { kind: "list", items: [
-        "Higher High (HH) — a swing high above the prior high.",
-        "Higher Low (HL) — a swing low above the prior low.",
-        "Lower High (LH) — a swing high below the prior high.",
-        "Lower Low (LL) — a swing low below the prior low.",
+        "Higher High (HH) — oldingi high'dan yuqori swing high.",
+        "Higher Low (HL) — oldingi low'dan yuqori swing low.",
+        "Lower High (LH) — oldingi high'dan past swing high.",
+        "Lower Low (LL) — oldingi low'dan past swing low.",
       ] },
-      { kind: "callout", tone: "bull", title: "Uptrend = HH + HL", text: "A series of higher highs and higher lows defines a bullish structure." },
-      { kind: "callout", tone: "bear", title: "Downtrend = LH + LL", text: "A series of lower highs and lower lows defines a bearish structure." },
+      { kind: "callout", tone: "bull", title: "Uptrend = HH + HL", text: "Ketma-ket higher high va higher low'lar bullish strukturani belgilaydi." },
+      { kind: "callout", tone: "bear", title: "Downtrend = LH + LL", text: "Ketma-ket lower high va lower low'lar bearish strukturani belgilaydi." },
     ],
     examples: [
-      { title: "Uptrend structure (auto-labelled)", candles: up, markers: upMarkers, caption: "Higher highs and higher lows stack upward." },
+      { title: "Uptrend strukturasi (avto-belgilangan)", candles: up, markers: upMarkers, caption: "Higher high va higher low'lar yuqoriga taxlanadi." },
     ],
     quiz: [
-      q("ms-sw-1", "An uptrend is defined by:", [["a", "LH and LL"], ["b", "HH and HL"], ["c", "Equal highs"], ["d", "Random swings"]], ["b"], "Uptrend = higher highs + higher lows."),
-      q("ms-sw-2", "A swing low above the previous swing low is a:", [["a", "Lower Low"], ["b", "Higher Low"], ["c", "Lower High"], ["d", "Higher High"]], ["b"], "That is a Higher Low (HL)."),
+      q("ms-sw-1", "Uptrend nima bilan belgilanadi?", [["a", "LH va LL"], ["b", "HH va HL"], ["c", "Teng high'lar"], ["d", "Tasodifiy to'lqinlar"]], ["b"], "Uptrend = higher high'lar + higher low'lar."),
+      q("ms-sw-2", "Oldingi swing low'dan yuqoridagi swing low bu:", [["a", "Lower Low"], ["b", "Higher Low"], ["c", "Lower High"], ["d", "Higher High"]], ["b"], "Bu Higher Low (HL)."),
     ],
   },
   {
     id: "ms-trends",
     moduleId: "market-structure",
-    title: "Trends: Uptrend, Downtrend, Range",
-    summary: "Classify the environment before you trade.",
+    title: "Trendlar: Uptrend, Downtrend, Range",
+    summary: "Savdo qilishdan oldin muhitni aniqlang.",
     minutes: 7,
     content: [
-      { kind: "paragraph", text: "Every chart is in one of three states. Identify it first — your bias and setups depend on it." },
+      { kind: "paragraph", text: "Har bir grafik uchta holatdan birida bo'ladi. Avval uni aniqlang — sizning biasingiz va setuplaringiz shunga bog'liq." },
       { kind: "list", items: [
-        "Uptrend: buy pullbacks into discount (HL areas).",
-        "Downtrend: sell rallies into premium (LH areas).",
-        "Range: fade the edges (sell highs / buy lows) until a break.",
+        "Uptrend: discount'ga (HL hududlari) pullback'larda sotib oling.",
+        "Downtrend: premium'ga (LH hududlari) ko'tarilishlarda soting.",
+        "Range: chetlardan savdo qiling (high'larni soting / low'larni soting) to break bo'lguncha.",
       ] },
     ],
     examples: [
-      { title: "Downtrend", candles: down, markers: downMarkers, caption: "Lower highs and lower lows." },
-      { title: "Range", candles: range, caption: "Price oscillates between horizontal boundaries." },
+      { title: "Downtrend", candles: down, markers: downMarkers, caption: "Lower high va lower low'lar." },
+      { title: "Range", candles: range, caption: "Narx gorizontal chegaralar orasida tebranadi." },
     ],
     quiz: [
-      q("ms-tr-1", "In a clean downtrend you should prefer to:", [["a", "Buy dips"], ["b", "Sell rallies into premium"], ["c", "Hold longs"], ["d", "Avoid all trades"]], ["b"], "Trade with the trend — sell rallies into premium (LH)."),
+      q("ms-tr-1", "Toza downtrend'da nima qilishni afzal ko'rasiz?", [["a", "Tushishlarda sotib olish"], ["b", "Premium'ga ko'tarilishlarda sotish"], ["c", "Long'larni ushlab turish"], ["d", "Barcha savdolardan qochish"]], ["b"], "Trend bilan savdo qiling — premium'ga (LH) ko'tarilishlarda soting."),
     ],
   },
   {
     id: "ms-bos-choch",
     moduleId: "market-structure",
-    title: "BOS & CHoCH",
-    summary: "Continuation vs the first sign of reversal.",
+    title: "BOS va CHoCH",
+    summary: "Davom etish vs reversalning birinchi belgisi.",
     minutes: 9,
     content: [
       { kind: "heading", text: "Break of Structure (BOS)" },
-      { kind: "paragraph", text: "A BOS confirms continuation: in an uptrend, a candle closes above the prior swing high. It says the dominant order flow is intact." },
+      { kind: "paragraph", text: "BOS davom etishni tasdiqlaydi: uptrend'da sham oldingi swing high'dan yuqorida yopiladi. Bu dominant order flow saqlanib qolganini bildiradi." },
       { kind: "heading", text: "Change of Character (CHoCH)" },
-      { kind: "paragraph", text: "A CHoCH is the first break against the trend — in an uptrend, price closes below the most recent higher-low. It warns the trend may be ending and often precedes a reversal." },
-      { kind: "callout", tone: "info", title: "Sequence", text: "Reversals usually go: liquidity sweep → CHoCH (MSS) → pullback → new BOS in the new direction." },
+      { kind: "paragraph", text: "CHoCH — trendga qarshi birinchi break: uptrend'da narx eng so'nggi higher-low'dan pastda yopiladi. Bu trend tugashi mumkinligidan ogohlantiradi va ko'pincha reversaldan oldin keladi." },
+      { kind: "callout", tone: "info", title: "Ketma-ketlik", text: "Reversallar odatda shunday kechadi: likvidlik sweep → CHoCH (MSS) → pullback → yangi yo'nalishda yangi BOS." },
     ],
     examples: [
-      { title: "BOS in an uptrend", candles: up, markers: [...upMarkers, ...bosMarker], caption: "Close above the prior swing high confirms continuation." },
+      { title: "Uptrend'da BOS", candles: up, markers: [...upMarkers, ...bosMarker], caption: "Oldingi swing high'dan yuqorida yopilish davom etishni tasdiqlaydi." },
     ],
     quiz: [
-      q("ms-bc-1", "A CHoCH in an uptrend is:", [["a", "A close above the last high"], ["b", "A close below the last higher-low"], ["c", "A doji"], ["d", "A new HH"]], ["b"], "CHoCH = first break against the trend (below the last HL)."),
-      q("ms-bc-2", "A BOS signals:", [["a", "Reversal"], ["b", "Trend continuation"], ["c", "Indecision"], ["d", "Low liquidity"]], ["b"], "BOS confirms the trend is continuing."),
+      q("ms-bc-1", "Uptrend'da CHoCH bu:", [["a", "Oxirgi high'dan yuqorida yopilish"], ["b", "Oxirgi higher-low'dan pastda yopilish"], ["c", "Doji"], ["d", "Yangi HH"]], ["b"], "CHoCH = trendga qarshi birinchi break (oxirgi HL'dan past)."),
+      q("ms-bc-2", "BOS nimani bildiradi?", [["a", "Reversal"], ["b", "Trend davom etishi"], ["c", "Ikkilanish"], ["d", "Past likvidlik"]], ["b"], "BOS trend davom etayotganini tasdiqlaydi."),
     ],
   },
   {
     id: "ms-internal-external",
     moduleId: "market-structure",
-    title: "Internal vs External Structure",
-    summary: "Fractal structure: the swings inside the swings.",
+    title: "Internal vs External Struktura",
+    summary: "Fraktal struktura: to'lqinlar ichidagi to'lqinlar.",
     minutes: 7,
     content: [
-      { kind: "paragraph", text: "External structure is the major swing high-to-low range (the higher-timeframe move). Internal structure is the smaller pullback structure that forms inside that range." },
+      { kind: "paragraph", text: "External (tashqi) struktura — asosiy swing high'dan low'gacha bo'lgan diapazon (yuqori taymfreym harakati). Internal (ichki) struktura — o'sha diapazon ichida shakllanadigan kichikroq pullback strukturasi." },
       { kind: "list", items: [
-        "Trade internal structure shifts in the direction of external structure.",
-        "An internal CHoCH inside a discount zone can signal the next external leg up.",
-        "Market Shift = when internal structure flips and aligns to drive external structure.",
+        "Internal struktura o'zgarishlarini external struktura yo'nalishida savdo qiling.",
+        "Discount zonasi ichidagi internal CHoCH keyingi external ko'tarilish to'lqinini bildirishi mumkin.",
+        "Market Shift = internal struktura ag'darilib, external strukturani harakatga keltirish uchun moslashganda.",
       ] },
     ],
     quiz: [
-      q("ms-ie-1", "Internal structure refers to:", [["a", "The major HTF swing range"], ["b", "Smaller pullback structure inside the major range"], ["c", "Volume profile"], ["d", "The daily open"]], ["b"], "Internal = the smaller structure inside the larger external swing."),
+      q("ms-ie-1", "Internal struktura nimaga ishora qiladi?", [["a", "Asosiy HTF swing diapazoniga"], ["b", "Asosiy diapazon ichidagi kichikroq pullback strukturasiga"], ["c", "Hajm profiliga"], ["d", "Kunlik ochilishga"]], ["b"], "Internal = kattaroq external swing ichidagi kichikroq struktura."),
     ],
   },
 ];
@@ -133,9 +132,9 @@ export const marketStructureModule: Module = {
   id: "market-structure",
   order: 2,
   title: "Market Structure",
-  subtitle: "How price actually moves",
+  subtitle: "Narx aslida qanday harakatlanadi",
   description:
-    "Read swings, classify trends, and time entries with Break of Structure and Change of Character.",
+    "To'lqinlarni o'qing, trendlarni aniqlang va Break of Structure hamda Change of Character bilan kirishni rejalashtiring.",
   icon: "📈",
   level: "beginner",
   lessons,

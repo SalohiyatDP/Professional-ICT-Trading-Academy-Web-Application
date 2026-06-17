@@ -8,17 +8,17 @@ export function ExamPage() {
   return (
     <div className="space-y-4">
       <SectionTitle
-        title="🏆 Final Certification Exam"
-        subtitle="Score 85%+ to qualify for the Professional ICT Trader certificate"
+        title="🏆 Yakuniy Sertifikatsiya Imtihoni"
+        subtitle="Professional ICT Treyder sertifikatiga ega bo'lish uchun 85%+ to'plang"
       />
-      <Callout tone="info" title="How certification works">
-        Your best exam score sets your certification level: 60% Beginner, 70% Intermediate, 80%
-        Advanced, 85%+ Professional. Retake any time — your best result is kept.
+      <Callout tone="info" title="Sertifikatsiya qanday ishlaydi">
+        Eng yaxshi imtihon balingiz sertifikatsiya darajangizni belgilaydi: 60% Boshlang'ich, 70% O'rta, 80%
+        Yuqori, 85%+ Professional. Istalgan vaqtda qayta topshiring — eng yaxshi natijangiz saqlanadi.
       </Callout>
       <QuizEngine
         moduleId="final"
         questions={finalExamWithCharts}
-        title="Final exam"
+        title="Yakuniy imtihon"
         onExit={() => navigate("/certificates")}
       />
     </div>

@@ -32,12 +32,12 @@ export function LessonPage() {
         <Link to={`/module/${mod.id}`} className="text-sm text-muted hover:text-white">
           ← {mod.title}
         </Link>
-        <Badge tone={isDone ? "bull" : "neutral"}>{isDone ? "Completed ✓" : `${lesson.minutes} min`}</Badge>
+        <Badge tone={isDone ? "bull" : "neutral"}>{isDone ? "Tugallandi ✓" : `${lesson.minutes} daqiqa`}</Badge>
       </div>
 
       <div>
         <p className="text-xs uppercase tracking-wide text-accent">
-          Lesson {idx + 1} of {mod.lessons.length}
+          {idx + 1}-dars / {mod.lessons.length}
         </p>
         <h1 className="text-2xl font-bold text-white">{lesson.title}</h1>
         <p className="text-sm text-muted">{lesson.summary}</p>
@@ -51,18 +51,18 @@ export function LessonPage() {
         <div className="flex gap-2">
           {prev && (
             <Link to={`/module/${mod.id}/lesson/${prev.id}`} className="btn-ghost">
-              ← Previous
+              ← Oldingi
             </Link>
           )}
           <button
             className="btn-ghost"
             onClick={() => (isDone ? uncomplete(lesson.id) : complete(lesson.id))}
           >
-            {isDone ? "Mark incomplete" : "Mark complete"}
+            {isDone ? "Tugallanmagan deb belgilash" : "Tugallangan deb belgilash"}
           </button>
         </div>
         <button className="btn-primary" onClick={onComplete}>
-          {nextLesson ? "Complete & next →" : "Complete & take quiz →"}
+          {nextLesson ? "Tugatish va keyingisi →" : "Tugatish va testni boshlash →"}
         </button>
       </div>
     </div>

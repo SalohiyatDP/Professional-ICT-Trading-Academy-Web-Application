@@ -29,7 +29,7 @@ function q(
   };
 }
 
-// A swing low at ~99 to swing high at ~109. Equilibrium = 104.
+// ~99 swing low'dan ~109 swing high'gacha. Equilibrium = 104.
 const swing: Candle[] = [
   c(0, 99.2, 99.8, 99.0, 99.6),
   c(1, 99.6, 101.5, 99.4, 101.2),
@@ -38,15 +38,15 @@ const swing: Candle[] = [
   c(4, 105.2, 107.4, 105.0, 107.1),
   c(5, 107.1, 109.0, 106.9, 108.8), // swing high ~109
   c(6, 108.8, 109.0, 106.0, 106.2),
-  c(7, 106.2, 106.4, 103.6, 103.8), // pullback to equilibrium/discount
+  c(7, 106.2, 106.4, 103.6, 103.8), // equilibrium/discount'ga pullback
 ];
 
 const low = 99.0;
 const high = 109.0;
 const eq = (low + high) / 2; // 104
 const zones = [
-  { id: "premium", type: "premium" as const, startTime: t(0), endTime: t(7), top: high, bottom: eq, color: "#ef5350", label: "Premium (sell)" },
-  { id: "discount", type: "discount" as const, startTime: t(0), endTime: t(7), top: eq, bottom: low, color: "#26a69a", label: "Discount (buy)" },
+  { id: "premium", type: "premium" as const, startTime: t(0), endTime: t(7), top: high, bottom: eq, color: "#ef5350", label: "Premium (sotish)" },
+  { id: "discount", type: "discount" as const, startTime: t(0), endTime: t(7), top: eq, bottom: low, color: "#26a69a", label: "Discount (sotib olish)" },
 ];
 const eqLine = [{ price: eq, color: "#f5b041", title: "Equilibrium 50%" }];
 
@@ -54,46 +54,46 @@ const lessons: Lesson[] = [
   {
     id: "pd-fib",
     moduleId: "premium-discount",
-    title: "Fibonacci Range & Equilibrium",
-    summary: "Split any range into premium and discount.",
+    title: "Fibonacci Diapazoni va Equilibrium",
+    summary: "Har qanday diapazonni premium va discount'ga bo'ling.",
     minutes: 8,
     content: [
-      { kind: "paragraph", text: "Draw a Fibonacci from a swing low to a swing high. The 50% level is Equilibrium — fair value. Everything above is Premium (expensive); everything below is Discount (cheap)." },
+      { kind: "paragraph", text: "Swing low'dan swing high'gacha Fibonacci chizing. 50% darajasi — Equilibrium, ya'ni adolatli qiymat. Undan yuqorisi hammasi Premium (qimmat); pastdagisi hammasi Discount (arzon)." },
       { kind: "list", items: [
-        "Premium zone (above 50%): look for SELLS.",
-        "Discount zone (below 50%): look for BUYS.",
-        "Equilibrium (50%): neutral — avoid initiating here.",
+        "Premium zonasi (50% dan yuqori): SOTISH'ni qidiring.",
+        "Discount zonasi (50% dan past): SOTIB OLISH'ni qidiring.",
+        "Equilibrium (50%): neytral — bu yerda kirishdan saqlaning.",
       ] },
-      { kind: "callout", tone: "info", title: "OTE", text: "The Optimal Trade Entry is the 0.62–0.79 retracement — a deep discount (for longs) inside the range." },
+      { kind: "callout", tone: "info", title: "OTE", text: "Optimal Trade Entry — 0.62–0.79 retracement — diapazon ichidagi chuqur discount (long'lar uchun)." },
     ],
     examples: [
-      { title: "Premium / Discount split", candles: swing, zones, caption: "Above equilibrium = premium (sell); below = discount (buy)." },
+      { title: "Premium / Discount bo'linishi", candles: swing, zones, caption: "Equilibrium'dan yuqori = premium (sotish); pastdagisi = discount (sotib olish)." },
     ],
     quiz: [
-      q("pd-f-1", "Equilibrium is the:", [["a", "0% level"], ["b", "50% of the range"], ["c", "100% level"], ["d", "0.79 retracement"]], ["b"], "Equilibrium = the 50% midpoint of the dealing range."),
-      q("pd-f-2", "In the discount zone you should look to:", [["a", "Sell"], ["b", "Buy"], ["c", "Do nothing"], ["d", "Close all trades"]], ["b"], "Discount = cheap = look for buys (in a bullish context)."),
+      q("pd-f-1", "Equilibrium qayerda joylashadi?", [["a", "0% darajada"], ["b", "Diapazonning 50% ida"], ["c", "100% darajada"], ["d", "0.79 retracement'da"]], ["b"], "Equilibrium = savdo diapazonining 50% o'rta nuqtasi."),
+      q("pd-f-2", "Discount zonasida nima qilishni qidirasiz?", [["a", "Sotish"], ["b", "Sotib olish"], ["c", "Hech narsa"], ["d", "Barcha savdolarni yopish"]], ["b"], "Discount = arzon = sotib olishni qidiring (bullish kontekstda)."),
     ],
   },
   {
     id: "pd-application",
     moduleId: "premium-discount",
-    title: "Applying Premium & Discount",
-    summary: "Combine with structure and order blocks.",
+    title: "Premium va Discount'ni qo'llash",
+    summary: "Struktura va order block'lar bilan birlashtiring.",
     minutes: 6,
     content: [
-      { kind: "paragraph", text: "Premium/discount is a filter, not a signal on its own. Combine it: in a bullish trend, wait for price to pull back into discount AND tag an order block / FVG before buying." },
+      { kind: "paragraph", text: "Premium/discount o'z-o'zidan signal emas, balki filtr. Uni birlashtiring: bullish trendda narx discount'ga qaytib, order block / FVG'ga tegishini kutib, keyin sotib oling." },
       { kind: "do-dont", works: [
-        "Buying a discount order block in an uptrend",
-        "Selling a premium FVG in a downtrend",
-        "Using equilibrium as a partial-target",
+        "Uptrend'da discount order block'ni sotib olish",
+        "Downtrend'da premium FVG'ni sotish",
+        "Equilibrium'ni qisman-nishon sifatida ishlatish",
       ], fails: [
-        "Buying in premium in an uptrend (chasing)",
-        "Ignoring higher-timeframe range boundaries",
-        "Forcing trades at equilibrium",
+        "Uptrend'da premium'da sotib olish (quvib yurish)",
+        "Yuqori taymfreym diapazon chegaralarini e'tiborsiz qoldirish",
+        "Equilibrium'da savdoni majburlash",
       ] },
     ],
     quiz: [
-      q("pd-a-1", "Best practice in a bullish trend is to buy:", [["a", "In premium"], ["b", "At equilibrium"], ["c", "In discount at an OB/FVG"], ["d", "At the high"]], ["c"], "Buy discount + confluence (OB/FVG) for a low-risk entry."),
+      q("pd-a-1", "Bullish trendda eng yaxshi amaliyot qayerda sotib olish?", [["a", "Premium'da"], ["b", "Equilibrium'da"], ["c", "OB/FVG'dagi discount'da"], ["d", "High'da"]], ["c"], "Past riskli kirish uchun discount + confluence (OB/FVG) ni sotib oling."),
     ],
   },
 ];
@@ -103,10 +103,10 @@ export { eqLine };
 export const premiumDiscountModule: Module = {
   id: "premium-discount",
   order: 6,
-  title: "Premium & Discount",
-  subtitle: "Buy cheap, sell expensive",
+  title: "Premium va Discount",
+  subtitle: "Arzon sotib oling, qimmat soting",
   description:
-    "Use Fibonacci, equilibrium and premium/discount zones to only take trades at favourable prices.",
+    "Fibonacci, equilibrium va premium/discount zonalaridan foydalanib, faqat qulay narxlarda savdo qiling.",
   icon: "⚖️",
   level: "advanced",
   lessons,

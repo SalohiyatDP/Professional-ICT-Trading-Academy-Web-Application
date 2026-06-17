@@ -177,20 +177,20 @@ export interface ReplayDataset {
 export const replayDatasets: ReplayDataset[] = [
   {
     id: "trend-london",
-    name: "Trending London Session",
-    description: "A clean bullish leg with a liquidity sweep and continuation.",
+    name: "Trendli London Sessiyasi",
+    description: "Likvidlik sweep va davom etish bilan toza bullish leg.",
     candles: generateSeries(160, { seed: 101, start: 100, drift: 0.12, volatility: 1.6 }),
   },
   {
     id: "range-ny",
-    name: "Ranging New York Session",
-    description: "Choppy consolidation that traps both sides before a break.",
+    name: "Diapazonli New York Sessiyasi",
+    description: "Break'dan oldin ikkala tomonni ham tuzoqqa soluvchi notinch konsolidatsiya.",
     candles: generateSeries(160, { seed: 202, start: 120, drift: 0, volatility: 1.3 }),
   },
   {
     id: "reversal-asia",
-    name: "Asian Reversal",
-    description: "A downtrend that shifts character into a reversal.",
+    name: "Osiyo Reversali",
+    description: "Xarakterini reversalga o'zgartiradigan downtrend.",
     candles: (() => {
       const down = generateSeries(80, { seed: 303, start: 140, drift: -0.18, volatility: 1.5 });
       const lastTime = down[down.length - 1].time;

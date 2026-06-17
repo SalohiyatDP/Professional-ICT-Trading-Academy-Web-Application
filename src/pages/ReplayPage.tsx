@@ -63,14 +63,14 @@ export function ReplayPage() {
   if (!session) {
     return (
       <div className="space-y-6">
-        <SectionTitle title="⏯ Replay Simulator" subtitle="Reveal candles one at a time and trade like it's live" />
+        <SectionTitle title="⏯ Replay Simulyator" subtitle="Shamlarni bittalab oching va jonli savdo qilgandek savdo qiling" />
         <div className="grid gap-4 sm:grid-cols-3">
           {replayDatasets.map((d) => (
             <Card key={d.id} className="flex flex-col">
               <h3 className="font-semibold text-white">{d.name}</h3>
               <p className="mb-4 mt-1 flex-1 text-xs text-muted">{d.description}</p>
               <button className="btn-primary" onClick={() => loadDataset(d.id)}>
-                Start session
+                Sessiyani boshlash
               </button>
             </Card>
           ))}
@@ -82,9 +82,9 @@ export function ReplayPage() {
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <SectionTitle title="⏯ Replay Simulator" subtitle="Predict the next candle, then enter your trade" />
+        <SectionTitle title="⏯ Replay Simulyator" subtitle="Keyingi shamni taxmin qiling, keyin savdoga kiring" />
         <button className="btn-ghost" onClick={() => loadDataset(session.datasetId)}>
-          ↻ Restart
+          ↻ Qayta boshlash
         </button>
       </div>
 
@@ -94,22 +94,22 @@ export function ReplayPage() {
 
       <div className="flex flex-wrap items-center gap-2">
         <button className="btn-ghost" onClick={() => jump(-5)}>« -5</button>
-        <button className="btn-ghost" onClick={back}>‹ Back</button>
-        <button className="btn-primary" onClick={next}>Next candle ›</button>
+        <button className="btn-ghost" onClick={back}>‹ Orqaga</button>
+        <button className="btn-primary" onClick={next}>Keyingi sham ›</button>
         <button className="btn-ghost" onClick={() => jump(5)}>+5 »</button>
         {last && (
           <Badge tone="accent" className="ml-2 font-mono">
-            close {last.close}
+            yopilish {last.close}
           </Badge>
         )}
         <button className="btn-ghost ml-auto" onClick={() => void saveSession()}>
-          💾 Save session
+          💾 Sessiyani saqlash
         </button>
       </div>
 
       <div className="grid gap-4 lg:grid-cols-3">
         <Card className="lg:col-span-1">
-          <h3 className="mb-3 font-semibold text-white">Place trade</h3>
+          <h3 className="mb-3 font-semibold text-white">Savdo qo'yish</h3>
           <div className="mb-3 grid grid-cols-2 gap-2">
             <button
               className={cn("btn", direction === "long" ? "btn-bull" : "btn-ghost")}
@@ -125,26 +125,26 @@ export function ReplayPage() {
             </button>
           </div>
           <div className="space-y-2">
-            <PriceInput label="Entry" value={entry} onChange={setEntry} />
+            <PriceInput label="Kirish" value={entry} onChange={setEntry} />
             <PriceInput label="Stop loss" value={sl} onChange={setSl} />
             <PriceInput label="Take profit" value={tp} onChange={setTp} />
           </div>
           <button className="btn-primary mt-3 w-full" onClick={placeTrade}>
-            Open trade
+            Savdoni ochish
           </button>
         </Card>
 
         <div className="lg:col-span-2 space-y-4">
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-            <StatCard label="Trades" value={stat.totalTrades} />
-            <StatCard label="Win rate" value={`${stat.winRate}%`} tone="bull" />
-            <StatCard label="Total R" value={stat.totalR} tone={stat.totalR >= 0 ? "bull" : "bear"} />
-            <StatCard label="Avg R" value={stat.avgR} tone="accent" />
+            <StatCard label="Savdolar" value={stat.totalTrades} />
+            <StatCard label="G'alaba foizi" value={`${stat.winRate}%`} tone="bull" />
+            <StatCard label="Jami R" value={stat.totalR} tone={stat.totalR >= 0 ? "bull" : "bear"} />
+            <StatCard label="O'rtacha R" value={stat.avgR} tone="accent" />
           </div>
           <Card>
-            <h3 className="mb-2 font-semibold text-white">Trade log</h3>
+            <h3 className="mb-2 font-semibold text-white">Savdolar jurnali</h3>
             {session.trades.length === 0 ? (
-              <p className="text-sm text-muted">No trades yet. Place one to begin.</p>
+              <p className="text-sm text-muted">Hali savdo yo'q. Boshlash uchun bittasini qo'ying.</p>
             ) : (
               <div className="space-y-1 text-sm">
                 {session.trades.map((t) => (
@@ -186,7 +186,7 @@ function PriceInput({ label, value, onChange }: { label: string; value: string; 
 }
 
 function StatusBadge({ status, r }: { status: string; r: number }) {
-  if (status === "open") return <Badge tone="neutral">open</Badge>;
+  if (status === "open") return <Badge tone="neutral">ochiq</Badge>;
   if (status === "win") return <Badge tone="bull">+{r}R</Badge>;
   if (status === "loss") return <Badge tone="bear">{r}R</Badge>;
   return <Badge tone="neutral">BE</Badge>;

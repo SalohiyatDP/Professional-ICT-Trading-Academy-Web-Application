@@ -29,14 +29,14 @@ function q(
   };
 }
 
-// Equal highs then a sweep above them and reversal.
+// Teng high'lar, keyin ular ustidan sweep va reversal.
 const equalHighsSweep: Candle[] = [
   c(0, 100, 101, 99.5, 100.8),
   c(1, 100.8, 103, 100.5, 102.8), // high ~103
-  c(2, 102.8, 103.05, 101, 101.4), // equal high ~103
-  c(3, 101.4, 103.02, 100.8, 102.6), // equal high ~103
-  c(4, 102.6, 104.4, 102.4, 102.7), // sweep above equal highs
-  c(5, 102.7, 102.9, 99.6, 99.9), // reversal down
+  c(2, 102.8, 103.05, 101, 101.4), // teng high ~103
+  c(3, 101.4, 103.02, 100.8, 102.6), // teng high ~103
+  c(4, 102.6, 104.4, 102.4, 102.7), // teng high'lar ustidan sweep
+  c(5, 102.7, 102.9, 99.6, 99.9), // pastga reversal
   c(6, 99.9, 100.2, 97.8, 98.1),
 ];
 
@@ -52,7 +52,7 @@ const equalHighsZones = [
     top: 103.1,
     bottom: 102.9,
     color: "#f5b041",
-    label: "Buy-side liquidity (equal highs)",
+    label: "Buy-side likvidlik (teng high'lar)",
   },
 ];
 
@@ -60,61 +60,61 @@ const lessons: Lesson[] = [
   {
     id: "lq-what",
     moduleId: "liquidity",
-    title: "What Is Liquidity?",
-    summary: "Resting orders the market needs to fill big positions.",
+    title: "Likvidlik nima?",
+    summary: "Yirik pozitsiyalarni to'ldirish uchun bozorga kerak bo'lgan kutayotgan orderlar.",
     minutes: 7,
     content: [
-      { kind: "paragraph", text: "Liquidity is clusters of resting orders — mostly stop-losses and pending orders. Large players need this liquidity to fill size without excessive slippage, so price is repeatedly drawn toward it." },
+      { kind: "paragraph", text: "Likvidlik — kutayotgan orderlar to'plami, asosan stop-loss va pending orderlar. Yirik o'yinchilar katta hajmni ortiqcha slippage'siz to'ldirish uchun shu likvidlikka muhtoj, shuning uchun narx doimo unga tortiladi." },
       { kind: "list", items: [
-        "Buy-side liquidity (BSL): buy stops resting ABOVE highs (short stops, breakout buys).",
-        "Sell-side liquidity (SSL): sell stops resting BELOW lows (long stops, breakout sells).",
+        "Buy-side likvidlik (BSL): high'lar USTIDA joylashgan buy stop'lar (short stop'lar, breakout buy'lar).",
+        "Sell-side likvidlik (SSL): low'lar OSTIDA joylashgan sell stop'lar (long stop'lar, breakout sell'lar).",
       ] },
-      { kind: "callout", tone: "info", title: "Think like the bank", text: "Ask: where are the obvious stops? Price often travels there before reversing." },
+      { kind: "callout", tone: "info", title: "Bank kabi fikrlang", text: "So'rang: aniq stop'lar qayerda? Narx ko'pincha reversal qilishdan oldin o'sha yerga boradi." },
     ],
     quiz: [
-      q("lq-w-1", "Buy-side liquidity rests:", [["a", "Below swing lows"], ["b", "Above swing highs"], ["c", "At the open"], ["d", "Mid-range"]], ["b"], "Buy stops rest above highs = buy-side liquidity."),
+      q("lq-w-1", "Buy-side likvidlik qayerda joylashadi?", [["a", "Swing low'lar ostida"], ["b", "Swing high'lar ustida"], ["c", "Ochilishda"], ["d", "Diapazon o'rtasida"]], ["b"], "Buy stop'lar high'lar ustida joylashadi = buy-side likvidlik."),
     ],
   },
   {
     id: "lq-equal",
     moduleId: "liquidity",
-    title: "Equal Highs & Equal Lows",
-    summary: "Obvious liquidity magnets.",
+    title: "Teng High'lar va Teng Low'lar",
+    summary: "Aniq likvidlik magnitlari.",
     minutes: 6,
     content: [
-      { kind: "paragraph", text: "When price prints two or more highs (or lows) at the same level, stops pile up just beyond them. These equal highs/lows are high-probability liquidity targets." },
+      { kind: "paragraph", text: "Narx bir xil darajada ikki yoki undan ortiq high (yoki low) chizganida, stop'lar ulardan sal narida to'planadi. Bu teng high/low'lar yuqori ehtimolli likvidlik nishonlaridir." },
     ],
     examples: [
-      { title: "Equal highs → sweep", candles: equalHighsSweep, zones: equalHighsZones, markers: equalHighsMarkers, caption: "Stops above the equal highs are swept, then price reverses." },
+      { title: "Teng high'lar → sweep", candles: equalHighsSweep, zones: equalHighsZones, markers: equalHighsMarkers, caption: "Teng high'lar ustidagi stop'lar sweep qilinadi, keyin narx reversal qiladi." },
     ],
     quiz: [
-      q("lq-e-1", "Equal highs attract price because:", [["a", "They are random"], ["b", "Stops accumulate just above them"], ["c", "Volume is low"], ["d", "They are support"]], ["b"], "Equal highs = obvious resting buy-side liquidity above them."),
+      q("lq-e-1", "Teng high'lar narxni nima uchun jalb qiladi?", [["a", "Ular tasodifiy"], ["b", "Ularning ustida stop'lar to'planadi"], ["c", "Hajm past"], ["d", "Ular qo'llab-quvvatlash"]], ["b"], "Teng high'lar = ularning ustida joylashgan aniq buy-side likvidlik."),
     ],
   },
   {
     id: "lq-sweep",
     moduleId: "liquidity",
-    title: "Liquidity Grab, Sweep & Stop Hunt",
-    summary: "The spike-and-reverse that starts ICT setups.",
+    title: "Liquidity Grab, Sweep va Stop Hunt",
+    summary: "ICT setuplarini boshlaydigan tikan-va-reversal.",
     minutes: 8,
     content: [
-      { kind: "paragraph", text: "A liquidity sweep (a.k.a. grab or stop hunt) is when price briefly trades through a high/low to trigger stops, then sharply reverses. The wick beyond the level — with an immediate rejection — is the tell." },
+      { kind: "paragraph", text: "Likvidlik sweep (ya'ni grab yoki stop hunt) — narx stop'larni ishga tushirish uchun high/low orqali qisqa muddat o'tib, keyin keskin reversal qilishi. Daraja ortidagi soya — darhol rad etish bilan — bu uning belgisi." },
       { kind: "do-dont", works: [
-        "Sweep into a higher-timeframe level / order block",
-        "Sweep followed by an immediate CHoCH / displacement",
-        "Sweep during a kill zone",
+        "Yuqori taymfreym darajasiga / order block'ga sweep",
+        "Darhol CHoCH / displacement bilan kuzatilgan sweep",
+        "Kill zone davomidagi sweep",
       ], fails: [
-        "Treating every wick as a sweep",
-        "Fading a sweep with no structure shift",
-        "Ignoring the higher-timeframe trend",
+        "Har bir soyani sweep deb hisoblash",
+        "Struktura o'zgarishisiz sweep'ni fade qilish",
+        "Yuqori taymfreym trendini e'tiborsiz qoldirish",
       ] },
     ],
     examples: [
-      { title: "Stop hunt above equal highs", candles: equalHighsSweep, zones: equalHighsZones, markers: equalHighsMarkers, caption: "Price spikes above liquidity, then reverses hard." },
+      { title: "Teng high'lar ustida stop hunt", candles: equalHighsSweep, zones: equalHighsZones, markers: equalHighsMarkers, caption: "Narx likvidlik ustiga tikiladi, keyin qattiq reversal qiladi." },
     ],
     quiz: [
-      q("lq-s-1", "A liquidity sweep is best confirmed by:", [["a", "A close far beyond the level"], ["b", "An immediate rejection + structure shift"], ["c", "Low volume"], ["d", "A doji days later"]], ["b"], "Sweep + immediate rejection and CHoCH/displacement confirms intent."),
-      q("lq-s-2", "A stop hunt below a swing low targets:", [["a", "Buy-side liquidity"], ["b", "Sell-side liquidity"], ["c", "Equilibrium"], ["d", "The open"]], ["b"], "Below lows sit sell stops = sell-side liquidity."),
+      q("lq-s-1", "Likvidlik sweep eng yaxshi nima bilan tasdiqlanadi?", [["a", "Darajadan ancha narida yopilish"], ["b", "Darhol rad etish + struktura o'zgarishi"], ["c", "Past hajm"], ["d", "Bir necha kundan keyin doji"]], ["b"], "Sweep + darhol rad etish va CHoCH/displacement niyatni tasdiqlaydi."),
+      q("lq-s-2", "Swing low ostidagi stop hunt nimani nishonga oladi?", [["a", "Buy-side likvidlik"], ["b", "Sell-side likvidlik"], ["c", "Equilibrium"], ["d", "Ochilish"]], ["b"], "Low'lar ostida sell stop'lar joylashadi = sell-side likvidlik."),
     ],
   },
 ];
@@ -122,10 +122,10 @@ const lessons: Lesson[] = [
 export const liquidityModule: Module = {
   id: "liquidity",
   order: 3,
-  title: "Liquidity",
-  subtitle: "Where the stops live",
+  title: "Liquidity (Likvidlik)",
+  subtitle: "Stop'lar qayerda yashaydi",
   description:
-    "Find buy-side and sell-side liquidity, spot equal highs/lows, and recognise sweeps and stop hunts.",
+    "Buy-side va sell-side likvidlikni toping, teng high/low'larni aniqlang va sweep hamda stop hunt'larni taning.",
   icon: "💧",
   level: "intermediate",
   lessons,

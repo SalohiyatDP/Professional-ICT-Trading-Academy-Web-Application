@@ -20,26 +20,26 @@ function q(
   };
 }
 
-/** Final certification exam — pulls from every module. */
+/** Yakuniy sertifikatsiya imtihoni — har bir moduldan savollar oladi. */
 export const finalExam: QuizQuestion[] = [
-  q("fx-1", "An uptrend is defined by:", [["a", "LH + LL"], ["b", "HH + HL"], ["c", "Equal highs"], ["d", "Dojis"]], ["b"], "HH + HL = bullish structure."),
-  q("fx-2", "A bullish order block is the:", [["a", "Last up-candle before a drop"], ["b", "Last down-candle before a rally"], ["c", "Biggest green candle"], ["d", "First candle of the day"]], ["b"], "Bullish OB = last down candle before displacement up."),
-  q("fx-3", "A Fair Value Gap needs:", [["a", "1 candle"], ["b", "3 candles with non-overlapping wicks"], ["c", "Equal lows"], ["d", "A doji"]], ["b"], "FVG = 3-candle imbalance."),
-  q("fx-4", "Buy-side liquidity sits:", [["a", "Below lows"], ["b", "Above highs"], ["c", "At equilibrium"], ["d", "At the open"]], ["b"], "Buy stops rest above highs."),
-  q("fx-5", "Equilibrium is at the ___ of a range.", [["a", "0%"], ["b", "50%"], ["c", "79%"], ["d", "100%"]], ["b"], "Equilibrium = 50% of the dealing range."),
-  q("fx-6", "A CHoCH in an uptrend is a close:", [["a", "Above the last high"], ["b", "Below the last higher-low"], ["c", "At equilibrium"], ["d", "On high volume"]], ["b"], "First break against trend = below last HL."),
-  q("fx-7", "A liquidity sweep is confirmed by:", [["a", "Immediate rejection + structure shift"], ["b", "A slow drift"], ["c", "Low volume"], ["d", "A gap up"]], ["a"], "Sweep + rejection/MSS shows intent."),
-  q("fx-8", "Identify this candle: small body on top, long lower wick, after a downtrend.", [["a", "Shooting Star"], ["b", "Hammer"], ["c", "Doji"], ["d", "Hanging Man"]], ["b"], "Long lower wick + small body after a downtrend = Hammer.", "chart-identify"),
-  q("fx-9", "At 1:3 R:R the break-even win rate is about:", [["a", "25%"], ["b", "50%"], ["c", "66%"], ["d", "10%"]], ["a"], "1/(1+RR) = 1/4 = 25%."),
-  q("fx-10", "A breaker block is:", [["a", "An OB that holds"], ["b", "A failed OB whose zone flips role"], ["c", "A doji cluster"], ["d", "An equal high"]], ["b"], "Failed OB → broken zone flips = breaker."),
-  q("fx-11", "An inversion FVG occurs when:", [["a", "Price fills 50%"], ["b", "Price closes through the gap, flipping polarity"], ["c", "Two FVGs touch"], ["d", "Volume spikes"]], ["b"], "Closed-through FVG flips role."),
-  q("fx-12", "The Judas Swing is:", [["a", "A risk model"], ["b", "A false early-session move that traps traders"], ["c", "A candlestick"], ["d", "An indicator"]], ["b"], "False session move to grab liquidity."),
-  q("fx-13", "Position size formula:", [["a", "Account × Leverage"], ["b", "(Account × Risk%) ÷ Stop distance"], ["c", "Risk% × Target"], ["d", "Fixed lot"]], ["b"], "Size = (Account × Risk%) ÷ stop distance."),
-  q("fx-14", "In a bullish trend you should buy in:", [["a", "Premium"], ["b", "Discount with confluence"], ["c", "Equilibrium only"], ["d", "At the high"]], ["b"], "Buy discount + OB/FVG confluence."),
-  q("fx-15", "Identify this candle pattern.", [["a", "Bullish Engulfing"], ["b", "Bearish Engulfing"], ["c", "Morning Star"], ["d", "Doji"]], ["a"], "A large up-candle engulfing the prior down-candle body.", "chart-identify"),
+  q("fx-1", "Uptrend nima bilan belgilanadi?", [["a", "LH + LL"], ["b", "HH + HL"], ["c", "Teng high'lar"], ["d", "Doji'lar"]], ["b"], "HH + HL = bullish struktura."),
+  q("fx-2", "Bullish order block bu:", [["a", "Tushishdan oldingi oxirgi ko'taruvchi sham"], ["b", "Ko'tarilishdan oldingi oxirgi tushuvchi sham"], ["c", "Eng katta yashil sham"], ["d", "Kunning birinchi shami"]], ["b"], "Bullish OB = yuqoriga displacement'dan oldingi oxirgi tushuvchi sham."),
+  q("fx-3", "Fair Value Gap'ga nima kerak?", [["a", "1 sham"], ["b", "Soyalari ustma-ust tushmaydigan 3 sham"], ["c", "Teng low'lar"], ["d", "Doji"]], ["b"], "FVG = 3 shamli disbalans."),
+  q("fx-4", "Buy-side likvidlik qayerda joylashadi?", [["a", "Low'lar ostida"], ["b", "High'lar ustida"], ["c", "Equilibrium'da"], ["d", "Ochilishda"]], ["b"], "Buy stop'lar high'lar ustida joylashadi."),
+  q("fx-5", "Equilibrium diapazonning ___ ida joylashadi.", [["a", "0%"], ["b", "50%"], ["c", "79%"], ["d", "100%"]], ["b"], "Equilibrium = savdo diapazonining 50% i."),
+  q("fx-6", "Uptrend'da CHoCH bu qayerda yopilish:", [["a", "Oxirgi high ustida"], ["b", "Oxirgi higher-low ostida"], ["c", "Equilibrium'da"], ["d", "Yuqori hajmda"]], ["b"], "Trendga qarshi birinchi break = oxirgi HL ostida."),
+  q("fx-7", "Likvidlik sweep nima bilan tasdiqlanadi?", [["a", "Darhol rad etish + struktura o'zgarishi"], ["b", "Sekin siljish"], ["c", "Past hajm"], ["d", "Gap yuqoriga"]], ["a"], "Sweep + rad etish/MSS niyatni ko'rsatadi."),
+  q("fx-8", "Bu shamni aniqlang: yuqorida kichik tana, uzun pastki soya, downtrend'dan keyin.", [["a", "Shooting Star"], ["b", "Hammer"], ["c", "Doji"], ["d", "Hanging Man"]], ["b"], "Downtrend'dan keyin uzun pastki soya + kichik tana = Hammer.", "chart-identify"),
+  q("fx-9", "1:3 R:R da nol-foyda g'alaba foizi taxminan:", [["a", "25%"], ["b", "50%"], ["c", "66%"], ["d", "10%"]], ["a"], "1/(1+RR) = 1/4 = 25%."),
+  q("fx-10", "Breaker block bu:", [["a", "Ushlab turadigan OB"], ["b", "Zonasi rolini ag'dargan muvaffaqiyatsiz OB"], ["c", "Doji to'plami"], ["d", "Teng high"]], ["b"], "Muvaffaqiyatsiz OB → sinish zonasi ag'dariladi = breaker."),
+  q("fx-11", "Inversion FVG qachon yuz beradi?", [["a", "Narx 50% to'ldirganda"], ["b", "Narx gap orqali yopilib, polaritetni ag'darganda"], ["c", "Ikki FVG tegishganda"], ["d", "Hajm sakraganda"]], ["b"], "Orqali yopilgan FVG rolini ag'daradi."),
+  q("fx-12", "Judas Swing bu:", [["a", "Tasdiqlangan trend"], ["b", "Treyderlarni tuzoqqa soluvchi soxta erta-sessiya harakati"], ["c", "Shamcha"], ["d", "Indikator"]], ["b"], "Likvidlik olish uchun soxta sessiya harakati."),
+  q("fx-13", "Pozitsiya hajmi formulasi:", [["a", "Hisob × Leverage"], ["b", "(Hisob × Risk%) ÷ Stop masofasi"], ["c", "Risk% × Nishon"], ["d", "Belgilangan lot"]], ["b"], "Hajm = (Hisob × Risk%) ÷ stop masofasi."),
+  q("fx-14", "Bullish trendda qayerda sotib olishingiz kerak?", [["a", "Premium'da"], ["b", "Confluence bilan discount'da"], ["c", "Faqat equilibrium'da"], ["d", "High'da"]], ["b"], "Discount + OB/FVG confluence'ni sotib oling."),
+  q("fx-15", "Bu sham patternini aniqlang.", [["a", "Bullish Engulfing"], ["b", "Bearish Engulfing"], ["c", "Morning Star"], ["d", "Doji"]], ["a"], "Oldingi tushuvchi sham tanasini yutuvchi katta ko'taruvchi sham.", "chart-identify"),
 ];
 
-/** Attach demo candles to chart-identify questions. */
+/** chart-identify savollariga demo shamlarni biriktirish. */
 export const finalExamWithCharts: QuizQuestion[] = finalExam.map((question) => {
   if (question.id === "fx-8") return { ...question, candles: candlePatterns.hammer };
   if (question.id === "fx-15") return { ...question, candles: candlePatterns["bullish-engulfing"] };

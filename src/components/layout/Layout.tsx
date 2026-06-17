@@ -55,7 +55,7 @@ function OfflineBadge() {
   return (
     <span className="badge bg-bull-soft text-bull-strong">
       <span className="h-1.5 w-1.5 rounded-full bg-bull-strong" />
-      Offline-ready
+      Offline-ga tayyor
     </span>
   );
 }

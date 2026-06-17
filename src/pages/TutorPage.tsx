@@ -29,10 +29,10 @@ export function TutorPage() {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <SectionTitle title="🤖 Offline AI Tutor" subtitle="Ask about any ICT concept — runs 100% offline" />
+        <SectionTitle title="🤖 Offline AI Repetitor" subtitle="Istalgan ICT tushunchasi haqida so'rang — 100% offline ishlaydi" />
         {messages.length > 0 && (
           <button className="btn-ghost" onClick={() => void clear()}>
-            Clear
+            Tozalash
           </button>
         )}
       </div>
@@ -41,7 +41,7 @@ export function TutorPage() {
         <div className="flex-1 space-y-3 overflow-y-auto pr-1">
           {messages.length === 0 && (
             <div className="text-sm text-muted">
-              <p className="mb-3">Try one of these:</p>
+              <p className="mb-3">Quyidagilardan birini sinab ko'ring:</p>
               <div className="flex flex-wrap gap-2">
                 {tutorSuggestions.map((s) => (
                   <button key={s} onClick={() => send(s)} className="btn-ghost text-xs py-1.5">
@@ -92,11 +92,11 @@ export function TutorPage() {
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Ask about order blocks, FVG, liquidity…"
+            placeholder="Order block, FVG, likvidlik haqida so'rang…"
             className="flex-1 rounded-lg border border-border bg-bg-soft px-3 py-2 text-sm text-white outline-none focus:border-accent"
           />
           <button type="submit" className="btn-primary">
-            Send
+            Yuborish
           </button>
         </form>
       </Card>

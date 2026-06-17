@@ -51,8 +51,8 @@ export const levelMeta: Record<
   CertificationLevel,
   { label: string; color: string; minScore: number }
 > = {
-  beginner: { label: "Beginner", color: "#26a69a", minScore: 60 },
-  intermediate: { label: "Intermediate", color: "#2962ff", minScore: 70 },
-  advanced: { label: "Advanced", color: "#9b59b6", minScore: 80 },
-  professional: { label: "Professional ICT Trader", color: "#f5b041", minScore: 85 },
+  beginner: { label: "Boshlang'ich", color: "#26a69a", minScore: 60 },
+  intermediate: { label: "O'rta", color: "#2962ff", minScore: 70 },
+  advanced: { label: "Yuqori", color: "#9b59b6", minScore: 80 },
+  professional: { label: "Professional ICT Treyder", color: "#f5b041", minScore: 85 },
 };

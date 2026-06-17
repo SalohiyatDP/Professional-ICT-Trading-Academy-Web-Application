@@ -26,7 +26,7 @@ function Block({ block, lesson }: { block: LessonBlock; lesson: Lesson }) {
       return (
         <div className="my-4 grid gap-3 sm:grid-cols-2">
           <div className="rounded-lg border border-bull/40 bg-bull-soft p-4">
-            <p className="mb-2 font-semibold text-bull-strong">✓ Where it works</p>
+            <p className="mb-2 font-semibold text-bull-strong">✓ Qayerda ishlaydi</p>
             <ul className="list-disc space-y-1 pl-4 text-sm text-gray-300">
               {block.works.map((w, i) => (
                 <li key={i}>{w}</li>
@@ -34,7 +34,7 @@ function Block({ block, lesson }: { block: LessonBlock; lesson: Lesson }) {
             </ul>
           </div>
           <div className="rounded-lg border border-bear/40 bg-bear-soft p-4">
-            <p className="mb-2 font-semibold text-bear-strong">✕ Where it fails</p>
+            <p className="mb-2 font-semibold text-bear-strong">✕ Qayerda ishlamaydi</p>
             <ul className="list-disc space-y-1 pl-4 text-sm text-gray-300">
               {block.fails.map((w, i) => (
                 <li key={i}>{w}</li>

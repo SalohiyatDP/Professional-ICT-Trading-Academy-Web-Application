@@ -71,14 +71,14 @@ export function AnimatedChart({
       />
       <div className="mt-2 flex items-center gap-2">
         <button onClick={replay} className="btn-ghost text-xs py-1 px-3">
-          {done ? "↻ Replay" : "↻ Restart"}
+          {done ? "↻ Qayta ko'rish" : "↻ Boshidan"}
         </button>
         {!done && (
           <button
             onClick={() => setPlaying((p) => !p)}
             className="btn-ghost text-xs py-1 px-3"
           >
-            {playing ? "⏸ Pause" : "▶ Play"}
+            {playing ? "⏸ To'xtatish" : "▶ Davom etish"}
           </button>
         )}
         <button
@@ -88,10 +88,10 @@ export function AnimatedChart({
           }}
           className="btn-ghost text-xs py-1 px-3"
         >
-          ⏭ Show all
+          ⏭ Hammasini ko'rsatish
         </button>
         <div className="ml-auto text-xs text-muted">
-          {Math.min(revealed, candles.length)} / {candles.length} candles
+          {Math.min(revealed, candles.length)} / {candles.length} sham
         </div>
       </div>
     </div>

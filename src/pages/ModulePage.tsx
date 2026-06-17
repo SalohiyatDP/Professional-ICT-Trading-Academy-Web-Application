@@ -1,5 +1,5 @@
 import { Link, useParams, Navigate } from "react-router-dom";
-import { getModule, moduleQuiz } from "@/data/curriculum";
+import { getModule, moduleQuiz, levelMeta } from "@/data/curriculum";
 import type { ModuleId } from "@/types";
 import { useProgressStore } from "@/store/useProgressStore";
 import { Card, ProgressBar, Badge, SectionTitle } from "@/components/ui";
@@ -20,20 +20,20 @@ export function ModulePage() {
   return (
     <div className="space-y-6">
       <Link to="/" className="text-sm text-muted hover:text-white">
-        ← Dashboard
+        ← Boshqaruv paneli
       </Link>
 
       <SectionTitle
         title={`${mod.icon} ${mod.title}`}
         subtitle={mod.description}
-        right={<Badge tone="accent">{mod.level}</Badge>}
+        right={<Badge tone="accent">{levelMeta[mod.level].label}</Badge>}
       />
 
       <Card>
         <div className="mb-2 flex justify-between text-sm">
-          <span className="text-white">Module progress</span>
+          <span className="text-white">Modul progressi</span>
           <span className="text-muted">
-            {done}/{mod.lessons.length} lessons · best quiz {best(mod.id)}%
+            {done}/{mod.lessons.length} dars · eng yaxshi test {best(mod.id)}%
           </span>
         </div>
         <ProgressBar value={pct} />
@@ -57,7 +57,7 @@ export function ModulePage() {
                   <p className="font-semibold text-white">{lesson.title}</p>
                   <p className="text-xs text-muted">{lesson.summary}</p>
                 </div>
-                <span className="text-xs text-muted">{lesson.minutes} min</span>
+                <span className="text-xs text-muted">{lesson.minutes} daqiqa</span>
               </Card>
             </Link>
           );
@@ -67,11 +67,11 @@ export function ModulePage() {
       {quizCount > 0 && (
         <Card className="flex items-center justify-between">
           <div>
-            <p className="font-semibold text-white">Module quiz</p>
-            <p className="text-xs text-muted">{quizCount} questions · best {best(mod.id)}%</p>
+            <p className="font-semibold text-white">Modul testi</p>
+            <p className="text-xs text-muted">{quizCount} savol · eng yaxshi {best(mod.id)}%</p>
           </div>
           <Link to={`/module/${mod.id}/quiz`} className="btn-primary">
-            Take quiz
+            Testni boshlash
           </Link>
         </Card>
       )}
