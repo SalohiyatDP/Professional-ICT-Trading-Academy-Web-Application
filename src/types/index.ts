@@ -76,6 +76,8 @@ export interface LessonExample {
   zones?: ChartZone[];
   markers?: ChartMarker[];
   lines?: DrawnLine[];
+  /** Horizontal reference levels (e.g. equilibrium, entry/SL/TP). */
+  priceLines?: { price: number; color: string; title: string }[];
   caption: string;
 }
 

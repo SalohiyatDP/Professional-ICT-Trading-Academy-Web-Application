@@ -105,6 +105,27 @@ const KB: KnowledgeEntry[] = [
       "Mitigation Block — narx davom etishdan oldin tuzoqqa tushgan orderlarni 'mitigatsiya' qilish uchun qaytadigan order block. Breaker Block order block muvaffaqiyatsiz bo'lganda shakllanadi: narx u orqali sinadi, keyin o'sha sinish zonasi qarama-qarshi rolga ag'dariladi (eski qo'llab-quvvatlash qarshilikka aylanadi) va kirish beradi.",
     related: [{ moduleId: "order-block" }],
   },
+  {
+    keywords: ["displacement", "siljish", "impuls", "momentum sham"],
+    topic: "Displacement",
+    answer:
+      "Displacement — bozorning agressiv, bir tomonlama harakati: kichik soyali katta tanali shamlar ketma-ketligi. U institutsional ishtirokni ko'rsatadi va odatda FVG hamda order block qoldiradi. Kuchli displacement strukturani buzganda (BOS/MSS), bu eng ishonchli kirish setuplarini hosil qiladi.",
+    related: [{ moduleId: "entry-models" }, { moduleId: "fvg" }],
+  },
+  {
+    keywords: ["dealing range", "pd array", "savdo diapazoni", "diapazon"],
+    topic: "Dealing Range va PD Array",
+    answer:
+      "Dealing Range — eng so'nggi muhim swing low va swing high orasidagi oraliq. Uni 50% (equilibrium) bo'yicha premium va discount'ga bo'lasiz. PD Array (Premium/Discount Array) — shu diapazon ichidagi narx darajalari: order block, FVG, breaker, liquidity void. Bias: discount'da bullish PD array'lardan sotib oling, premium'da bearish PD array'lardan soting.",
+    related: [{ moduleId: "premium-discount" }, { moduleId: "order-block" }],
+  },
+  {
+    keywords: ["candlestick", "shamcha", "sham", "soya", "tana", "wick", "body"],
+    topic: "Shamcha asoslari",
+    answer:
+      "Har bir shamcha OHLC ni kodlaydi: Open, High, Low, Close. Tana — ochilish va yopilish orasidagi masofa; soyalar — high va low'gacha cho'zilgan ingichka chiziqlar. Katta tana kuchli momentumni, uzun soya esa narxning rad etilishini bildiradi. Shamlarni doim struktura va likvidlik kontekstida o'qing.",
+    related: [{ moduleId: "candlesticks" }],
+  },
 ];
 
 const GREETINGS = ["hi", "hello", "salom", "hey", "assalom", "assalomu"];

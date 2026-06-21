@@ -75,26 +75,30 @@ function QuizRunner() {
         </div>
       )}
 
-      <div className="grid gap-2">
-        {q.options?.map((opt) => {
-          const isSel = selected.includes(opt.id);
-          return (
-            <button
-              key={opt.id}
-              onClick={() => toggle(opt.id)}
-              className={cn(
-                "rounded-lg border px-4 py-3 text-left text-sm transition-colors",
-                isSel
-                  ? "border-accent bg-accent-soft text-white"
-                  : "border-border bg-bg-soft text-gray-300 hover:border-border-soft"
-              )}
-            >
-              <span className="font-mono text-xs text-muted mr-2">{opt.id.toUpperCase()}</span>
-              {opt.text}
-            </button>
-          );
-        })}
-      </div>
+      {q.type === "drag-match" && q.pairs ? (
+        <DragMatch question={q} selected={selected} onChange={(a) => answer(q.id, a)} />
+      ) : (
+        <div className="grid gap-2">
+          {q.options?.map((opt) => {
+            const isSel = selected.includes(opt.id);
+            return (
+              <button
+                key={opt.id}
+                onClick={() => toggle(opt.id)}
+                className={cn(
+                  "rounded-lg border px-4 py-3 text-left text-sm transition-colors",
+                  isSel
+                    ? "border-accent bg-accent-soft text-white"
+                    : "border-border bg-bg-soft text-gray-300 hover:border-border-soft"
+                )}
+              >
+                <span className="font-mono text-xs text-muted mr-2">{opt.id.toUpperCase()}</span>
+                {opt.text}
+              </button>
+            );
+          })}
+        </div>
+      )}
 
       <div className="flex items-center justify-between pt-2">
         <button className="btn-ghost" onClick={prev} disabled={current === 0}>
@@ -196,6 +200,67 @@ function QuizResultView({
           );
         })}
       </Card>
+    </div>
+  );
+}
+
+
+/** Drag & Drop uslubidagi moslashtirish savoli (chap ustunni o'ng ustunga bog'lash). */
+function DragMatch({
+  question,
+  selected,
+  onChange,
+}: {
+  question: QuizQuestion;
+  selected: string[];
+  onChange: (answer: string[]) => void;
+}) {
+  const pairs = question.pairs ?? [];
+
+  // O'ng tomon variantlarini barqaror (lekin aralashtirilgan) tartibda ko'rsatamiz.
+  const rightOptions = useMemo(() => {
+    const items = pairs.map((p) => p.right);
+    // Savol id'siga asoslangan deterministik aralashtirish.
+    const seed = question.id.split("").reduce((a, ch) => a + ch.charCodeAt(0), 0);
+    return [...items].sort((a, b) => ((a.length + seed) % 7) - ((b.length + seed) % 7) || a.localeCompare(b));
+  }, [pairs, question.id]);
+
+  // Joriy tanlovni "left => right" ko'rinishidan map'ga aylantiramiz.
+  const chosen: Record<string, string> = {};
+  for (const entry of selected) {
+    const [l, r] = entry.split("=>");
+    if (l && r) chosen[l] = r;
+  }
+
+  const setMatch = (left: string, right: string) => {
+    const next = { ...chosen, [left]: right };
+    const answer = Object.entries(next)
+      .filter(([, r]) => r)
+      .map(([l, r]) => `${l}=>${r}`);
+    onChange(answer);
+  };
+
+  return (
+    <div className="space-y-2">
+      <p className="text-xs text-muted">Har bir tushunchaga to'g'ri ta'rifni moslang.</p>
+      {pairs.map((p) => (
+        <div key={p.left} className="flex items-center gap-3 rounded-lg border border-border bg-bg-soft px-3 py-2">
+          <span className="flex-1 text-sm font-medium text-white">{p.left}</span>
+          <span className="text-muted">→</span>
+          <select
+            value={chosen[p.left] ?? ""}
+            onChange={(e) => setMatch(p.left, e.target.value)}
+            className="flex-1 rounded-md border border-border bg-bg px-2 py-1.5 text-sm text-gray-200 outline-none focus:border-accent"
+          >
+            <option value="">— tanlang —</option>
+            {rightOptions.map((r) => (
+              <option key={r} value={r}>
+                {r}
+              </option>
+            ))}
+          </select>
+        </div>
+      ))}
     </div>
   );
 }

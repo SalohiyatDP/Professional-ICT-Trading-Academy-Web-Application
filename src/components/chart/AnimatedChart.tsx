@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import type { Candle, ChartMarker, ChartZone } from "@/types";
-import { CandleChart } from "./CandleChart";
+import { CandleChart, type PriceLineDef } from "./CandleChart";
 import { useSettingsStore } from "@/store/useSettingsStore";
 
 interface AnimatedChartProps {
   candles: Candle[];
   zones?: ChartZone[];
   markers?: ChartMarker[];
+  priceLines?: PriceLineDef[];
   height?: number;
   /** ms between revealing each candle */
   speed?: number;
@@ -21,6 +22,7 @@ export function AnimatedChart({
   candles,
   zones = [],
   markers = [],
+  priceLines = [],
   height = 320,
   speed = 280,
   showVolume = false,
@@ -58,6 +60,8 @@ export function AnimatedChart({
     setPlaying(true);
   };
   const done = revealed >= candles.length;
+  // Reference price lines only appear once the formation is complete.
+  const visiblePriceLines = done ? priceLines : [];
 
   return (
     <div>
@@ -65,6 +69,7 @@ export function AnimatedChart({
         candles={visibleCandles}
         zones={visibleZones}
         markers={visibleMarkers}
+        priceLines={visiblePriceLines}
         height={height}
         showVolume={showVolume}
         autoFit

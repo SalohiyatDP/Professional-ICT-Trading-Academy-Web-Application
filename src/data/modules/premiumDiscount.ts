@@ -67,7 +67,7 @@ const lessons: Lesson[] = [
       { kind: "callout", tone: "info", title: "OTE", text: "Optimal Trade Entry — 0.62–0.79 retracement — diapazon ichidagi chuqur discount (long'lar uchun)." },
     ],
     examples: [
-      { title: "Premium / Discount bo'linishi", candles: swing, zones, caption: "Equilibrium'dan yuqori = premium (sotish); pastdagisi = discount (sotib olish)." },
+      { title: "Premium / Discount bo'linishi", candles: swing, zones, priceLines: eqLine, caption: "Equilibrium'dan yuqori = premium (sotish); pastdagisi = discount (sotib olish). Sariq chiziq — 50% equilibrium." },
     ],
     quiz: [
       q("pd-f-1", "Equilibrium qayerda joylashadi?", [["a", "0% darajada"], ["b", "Diapazonning 50% ida"], ["c", "100% darajada"], ["d", "0.79 retracement'da"]], ["b"], "Equilibrium = savdo diapazonining 50% o'rta nuqtasi."),

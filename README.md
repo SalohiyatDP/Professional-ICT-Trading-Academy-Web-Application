@@ -191,6 +191,47 @@ Open the production preview in Chrome/Edge → use the **Install** icon in the a
 
 ---
 
+## 🐳 Tez ishga tushirish (Docker)
+
+Ilovani Node o'rnatmasdan, faqat Docker bilan ishga tushirish mumkin. Repozitoriyda tayyor `Dockerfile` (ko'p bosqichli build + `nginx`), `nginx.conf` (SPA fallback va keshlash) va `docker-compose.yml` mavjud.
+
+### docker compose bilan (tavsiya etiladi)
+
+```bash
+# image'ni build qilib, konteynerni ishga tushirish
+docker compose up -d --build
+
+# ilova: http://localhost:8080
+
+# loglarni ko'rish
+docker compose logs -f
+
+# to'xtatish va o'chirish
+docker compose down
+```
+
+### Faqat Docker bilan
+
+```bash
+# 1) image'ni build qilish
+docker build -t ict-trading-academy .
+
+# 2) konteynerni ishga tushirish (8080 -> 80)
+docker run -d --name ict-academy -p 8080:80 ict-trading-academy
+
+# ilova: http://localhost:8080
+```
+
+Build natijasi (`dist/`) `nginx` orqali statik tarzda tarqatiladi. `nginx.conf` quyidagilarni ta'minlaydi:
+
+- **SPA fallback** — barcha marshrutlar (`/module/...`, `/replay` va h.k.) `index.html` ga yo'naltiriladi, shuning uchun sahifani yangilashda 404 chiqmaydi.
+- **Keshlash** — `/assets/` (hashlangan fayllar) 1 yil immutable; `sw.js`, `index.html` va `manifest.webmanifest` hech qachon keshlanmaydi (yangilanishlar darhol yetib boradi).
+- **Gzip** siqish JS/CSS/SVG uchun yoqilgan.
+
+> Portni o'zgartirish uchun `-p <host>:80` ni (yoki `docker-compose.yml` dagi `ports`) tahrirlang. Ilova internetsiz to'liq ishlaydi — backend yoki muhit o'zgaruvchilari talab qilinmaydi.
+
+---
+
 ## 📦 Deployment Guide
 
 This is a fully static site — host the `dist/` folder anywhere.
@@ -205,6 +246,7 @@ Upload `dist/`. Because the app uses client-side routing, configure a **SPA fall
 - **Vercel** — framework preset "Vite" handles it automatically.
 - **Nginx** — `try_files $uri $uri/ /index.html;`
 - **GitHub Pages** — copy `index.html` to `404.html` after build.
+- **Docker / self-hosted** — use the included `Dockerfile` + `nginx.conf` (SPA fallback already configured). See the **Tez ishga tushirish (Docker)** section above.
 
 No environment variables, secrets or servers are required.
 

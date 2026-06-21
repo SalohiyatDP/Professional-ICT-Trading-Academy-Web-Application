@@ -59,7 +59,7 @@ function ExampleChart({ lesson, index }: { lesson: Lesson; index: number }) {
   return (
     <figure className="my-4 card p-3">
       <figcaption className="mb-2 text-sm font-semibold text-white">{ex.title}</figcaption>
-      <AnimatedChart candles={ex.candles} zones={ex.zones} markers={ex.markers} height={300} />
+      <AnimatedChart candles={ex.candles} zones={ex.zones} markers={ex.markers} priceLines={ex.priceLines} height={300} />
       <p className="mt-2 text-xs text-muted">{ex.caption}</p>
     </figure>
   );

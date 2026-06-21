@@ -171,6 +171,19 @@ const lessons: Lesson[] = [
     ],
     quiz: [
       q("cs-ht-1", "Tweezer Top nimadan hosil bo'ladi?", [["a", "Ikki teng low"], ["b", "Ikki (deyarli) teng high"], ["c", "Bitta uzun soya"], ["d", "Uch sham"]], ["b"], "Tweezer top = bir darajani rad etuvchi ikki mos high."),
+      {
+        id: "cs-ht-match",
+        type: "drag-match",
+        prompt: "Patternni uning ma'nosiga moslang:",
+        explanation: "Hammer va Morning Star — bullish reversal; Shooting Star — bearish reversal; Doji — ikkilanish.",
+        pairs: [
+          { left: "Hammer", right: "Bullish reversal (pastki soya)" },
+          { left: "Shooting Star", right: "Bearish reversal (yuqori soya)" },
+          { left: "Doji", right: "Ikkilanish / muvozanat" },
+          { left: "Morning Star", right: "Uch shamli bullish reversal" },
+        ],
+        points: 1,
+      },
     ],
   },
 ];
